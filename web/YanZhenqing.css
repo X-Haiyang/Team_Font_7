@@ -1,0 +1,6 @@
+@font-face {
+    font-family: 'YanZhenqing';
+    src: url('./Fonts/YanZhenqing.woff2') format('woff2'),
+        url('./Fonts/YanZhenqing.woff') format('woff');
+}
+

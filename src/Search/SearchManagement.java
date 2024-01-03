@@ -21,6 +21,19 @@ public class SearchManagement implements SearchService {
         return flag;
     }
 
+    @Override
+    public boolean UpDate(Word word) {
+        boolean flag = false;
+        WordDao udd = new WordDaoImpl();
+        if (udd.UpDate(word)) {
+            flag = true;
+        } else {
+            flag = false;
+        }
+        return flag;
+    }
+
+
 }
 
 

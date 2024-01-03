@@ -9,20 +9,50 @@
 <html>
 <head>
     <title>FontSearch</title>
+    <style>
+        body {
+            background: linear-gradient(45deg, #2E5F70,#00C9A7, #C4FCEF,#4D8076);
+            height: 100vh;
+            margin: 0;
+        }
+        #search-box{
+            width: 200px;
+            height: 30px;
+        }
+        #search{
+            height: 30px;
+            width: 50px;
+        }
+        .div1{
+            height: 100px;
+            width: 300px;
+
+            text-align:center;
+            font-family: Arial, sans-serif;
+            margin: 100px auto;
+            padding: 0;
+
+
+        }
+
+    </style>
 </head>
 <body>
 
-
+<div CLASS="div1">
 <form action="search" method="post">
-    输入您要查找的字体:
+
+    <p style="text-align:center;font-size: 40px;" >百字查</p>
     <label>
-        <input type="text" name="character">
-    </label><br>
+        <input type="text"  id="search-box" name="character">
+    </label>
 
 
-    <input type="submit" value="查找">
+
+    <input type="submit" id="search" value="我C">
+
 </form>
-
+</div>
 <% if (request.getAttribute("log") != null) {
     String str = (String) request.getAttribute("log");
     if (str.equals("err"))
@@ -30,6 +60,7 @@
                 "<br><span style=\"color:red\">请重新输入或联系管理员</span>");
 } %>
 
+<a href="UpDate.jsp">填充数据库</a>
 
 </body>
 </html>

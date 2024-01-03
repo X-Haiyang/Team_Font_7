@@ -1,0 +1,6 @@
+@font-face {
+    font-family: 'WangXizhi';
+    src: url('./Fonts/WangXizhi.woff2') format('woff2'),
+        url('./Fonts/WangXizhi.woff') format('woff');
+}
+

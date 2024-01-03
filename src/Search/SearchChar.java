@@ -1,6 +1,7 @@
 package Search;
 
 
+import Dao.WordDaoImpl;
 import Entity.Word;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletContext;
@@ -18,6 +19,7 @@ public class SearchChar extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        WordDaoImpl wd = new WordDaoImpl();
         HttpSession session = request.getSession();
         String character = request.getParameter("character");
         if (character == null) {
@@ -42,8 +44,13 @@ public class SearchChar extends HttpServlet {
             request.setAttribute("log", "ok");
 
 //-------------------------------------------------------
+            session.setAttribute("character", character);
             // 2.将数据添加到全局作用域对象，作为共享数据
             application.setAttribute("character", character);
+
+            String urlDB = wd.UrlDBSearch(word);
+            session.setAttribute("urlDB", urlDB);
+
 //-------------------------------------------------------
             dispatcher = getServletContext().getRequestDispatcher("/DisplayFont.jsp");
         } else {

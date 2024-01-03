@@ -20,18 +20,18 @@ public class WordDaoImpl implements WordDao {
         Connection conn = null;
         PreparedStatement pst = null;
         ResultSet rs = null;
-        DBUtilImpl dbUtilImpl = new DBUtilImpl();
+        DBUtilImpl dbUtilImpl = new DBUtilImpl();//创建了一个DBUtilImpl的对象，用于访问数据库并执行相关操作。
 
         try {
 
-            conn = dbUtilImpl.getConnection();
+            conn = dbUtilImpl.getConnection();//获取连接
 
             pst = conn.prepareStatement(sql);
             //创建prepareStatement，进行预编译sql语句
             pst.setString(1, word.getCharacter());
-            //占位
+            //占位，放入第一个参数
 
-            rs = pst.executeQuery();
+            rs = pst.executeQuery();//执行查询
 
             if (rs.next()) {
                 flag = true;
@@ -63,23 +63,23 @@ public class WordDaoImpl implements WordDao {
 
         try {
 
-            conn = dbUtilImpl.getConnection();
+            conn = dbUtilImpl.getConnection();//获取连接
 
             pst = conn.prepareStatement(sql);
             //创建prepareStatement，进行预编译sql语句
-            pst.setString(1, word.getCharacter());
+            pst.setString(1, word.getCharacter());//第一个参数
             //占位
 
-            rs = pst.executeQuery();
+            rs = pst.executeQuery();//执行查询
 
             if (rs.next()) {
-                urlDB = rs.getString("password");
+                urlDB = rs.getString("password");//获取查询结果
             }
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return urlDB;
+        return urlDB;//返回查询结果
     }
 
     @Override

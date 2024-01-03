@@ -4,7 +4,6 @@ package Search;
 import Dao.WordDaoImpl;
 import Entity.Word;
 import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -20,21 +19,16 @@ public class SearchChar extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         WordDaoImpl wd = new WordDaoImpl();
-        HttpSession session = request.getSession();
-        String character = request.getParameter("character");
+        HttpSession session = request.getSession();//HttpSession对象可以用于存储和访问与用户会话相关的信息。
+        String character = request.getParameter("character");//获取"character"的值
         if (character == null) {
             character = "";
         }
 
 
-        RequestDispatcher dispatcher = null;
-//        LoginManagement lm=new LoginManagement();
+        RequestDispatcher dispatcher = null;//跳转页面
 
         SearchManagement sm = new SearchManagement();
-//---------------------------------------------------------------
-        // 1.通过请求对象向Tomcat所要当前网站的全局作用域对象
-        ServletContext application = request.getServletContext();
-//---------------------------------------------------------------
 
         Word word = new Word();
         word.setCharacter(character);
@@ -42,22 +36,18 @@ public class SearchChar extends HttpServlet {
 
         if (sm.SearchWord(word)) {
             request.setAttribute("log", "ok");
-
 //-------------------------------------------------------
             session.setAttribute("character", character);
-            // 2.将数据添加到全局作用域对象，作为共享数据
-            application.setAttribute("character", character);
 
-            String urlDB = wd.UrlDBSearch(word);
+            String urlDB = wd.UrlDBSearch(word);//根据字查找数据库中的URL
             session.setAttribute("urlDB", urlDB);
-
 //-------------------------------------------------------
             dispatcher = getServletContext().getRequestDispatcher("/DisplayFont.jsp");
         } else {
             request.setAttribute("log", "err");
             dispatcher = getServletContext().getRequestDispatcher("/FontMain.jsp");
         }
-        dispatcher.forward(request, response);
+        dispatcher.forward(request, response);//跳转前端页面
     }
 
     @Override

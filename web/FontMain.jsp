@@ -11,7 +11,7 @@
     <title>FontSearch</title>
     <style>
         body {
-            background: linear-gradient(45deg, #2E5F70,#00C9A7, #C4FCEF,#4D8076);
+            background: linear-gradient(10deg, #2E5F70,#00C9A7, #C4FCEF,#4D8076);
             height: 100vh;
             margin: 0;
         }

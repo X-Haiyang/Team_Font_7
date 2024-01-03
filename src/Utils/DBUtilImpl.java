@@ -10,9 +10,9 @@ import java.sql.Statement;
 
 public class DBUtilImpl {
 
-    private static DataSource ds = null;
+    private static DataSource ds = null;//存储数据源对象
 
-    public static DataSource getDataSource() throws Exception {
+    public static DataSource getDataSource() {//从C3P0连接池获取连接
 
         if (ds == null) {
             ds = new ComboPooledDataSource();
@@ -23,7 +23,7 @@ public class DBUtilImpl {
     }
 
 
-    public Connection getConnection() {
+    public Connection getConnection() {//从连接池获取连接
 
         Connection connection = null;
         try {

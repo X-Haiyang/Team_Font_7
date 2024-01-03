@@ -1,7 +1,7 @@
 package Entity;
 
 public class Word {
-
+//用于存放字和URL的实体类
     private String character;
 
     private String UrlDB;
